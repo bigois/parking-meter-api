@@ -1,0 +1,25 @@
+#file: noinspection SpringBootApplicationYaml
+# suppress inspection "UnusedProperty" for whole file
+
+management:
+  endpoints:
+    web:
+      base-path: ''
+      path-mapping:
+        health: health
+server:
+  port: 8082
+spring:
+  datasource:
+    password: password
+    url: jdbc:mysql://localhost:3306/db_parquimetro_aws?createDatabaseIfNotExist=true
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true

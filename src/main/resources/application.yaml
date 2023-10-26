@@ -1,0 +1,7 @@
+# suppress inspection "UnusedProperty" for whole file
+
+spring:
+  profiles:
+    active: dev
+  web:
+    locale: en_US
