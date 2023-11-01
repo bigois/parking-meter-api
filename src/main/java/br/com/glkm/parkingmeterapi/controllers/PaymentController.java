@@ -34,7 +34,7 @@ public class PaymentController {
 
         JSONObject response = new JSONObject();
         response.put("id", payment.getId());
-        response.put("message", "parking meter successfully registered");
+        response.put("message", "payment successfully");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response.toString());
     }

@@ -1,9 +1,7 @@
 package br.com.glkm.parkingmeterapi.mappers;
 
-import br.com.glkm.parkingmeterapi.dtos.ParkingMeterResponseDTO;
 import br.com.glkm.parkingmeterapi.dtos.TicketRequestDTO;
 import br.com.glkm.parkingmeterapi.dtos.TicketResponseDTO;
-import br.com.glkm.parkingmeterapi.entities.ParkingMeter;
 import br.com.glkm.parkingmeterapi.entities.Ticket;
 
 public abstract class TicketMapper {

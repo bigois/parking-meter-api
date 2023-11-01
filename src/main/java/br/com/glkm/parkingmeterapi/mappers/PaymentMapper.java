@@ -6,15 +6,16 @@ import br.com.glkm.parkingmeterapi.dtos.PaymentResponseDTO;
 import br.com.glkm.parkingmeterapi.entities.ParkingMeter;
 import br.com.glkm.parkingmeterapi.entities.Payment;
 
+import java.util.UUID;
+
 public abstract class PaymentMapper {
     public static Payment paymentDTOtoPayment(PaymentRequestDTO paymentRequestDTO) {
         Payment payment = new Payment();
 
         payment.setLicensePlate(paymentRequestDTO.licencePlate());
-        payment.setStartTime(paymentRequestDTO.startTime());
         payment.setTotalTime(paymentRequestDTO.totalTime());
         payment.setPaidValue(paymentRequestDTO.paidValue());
-        payment.setParkingMeter(paymentRequestDTO.parkingMeter());
+        payment.setParkingMeter(UUID.fromString(paymentRequestDTO.parkingMeter()));
 
         return payment;
     };
