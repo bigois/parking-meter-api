@@ -1,17 +1,14 @@
-FROM alpine AS build
+# Use a imagem oficial do OpenJDK 11 como base
+FROM openjdk:17-jdk-alpine
 
-RUN mkdir -p /home/app
+# Defina o diretório de trabalho no contêiner
+WORKDIR /app
 
-COPY ./pom.xml /home/app
-COPY ./ /home/app
+# Copie o JAR gerado do seu projeto Spring Boot para o contêiner
+COPY build/libs/parking-meter-api-0.0.1-SNAPSHOT.jar app.jar
 
-RUN wget -O /etc/apk/keys/amazoncorretto.rsa.pub  https://apk.corretto.aws/amazoncorretto.rsa.pub
-RUN echo "https://apk.corretto.aws/" >> /etc/apk/repositories
-RUN apk update
-RUN apk add amazon-corretto-17
-RUN apk add maven
-RUN mvn -f /home/app/pom.xml clean package
-RUN cp /home/app/target/*.jar /usr/local/lib/app.jar
-
+# Exponha a porta em que a aplicação vai rodar (neste caso, a porta 8082)
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "-Xmx900m", "-Xms650m", "/usr/local/lib/app.jar"]
+
+# Comando para executar a aplicação Spring Boot
+CMD ["java", "-jar", "app.jar"]
